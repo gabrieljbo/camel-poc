@@ -1,0 +1,8 @@
+echo "define qlocal(PAYMENT.CASH.QL.REQ) maxdepth(500)" | runmqsc DEV
+echo "define qlocal(PAYMENT.CARD.QL.REQ) maxdepth(500)" | runmqsc DEV
+
+setmqaut -m DEV -t queue -n PAYMENT.CASH.QL.REQ -g devgrp +allmqi
+setmqaut -m DEV -t queue -n PAYMENT.CARD.QL.REQ -g devgrp +allmqi
+
+echo "dis qlocal(PAYMENT.CASH.QL.REQ) curdepth" | runmqsc DEV
+echo "dis qlocal(PAYMENT.CARD.QL.REQ) curdepth" | runmqsc DEV
